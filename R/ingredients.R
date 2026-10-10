@@ -1,5 +1,7 @@
 # Internal helpers ---------------------------------------------------------
 
+utils::globalVariables("feed.nrc.beef")
+
 # Nutrient columns of the reference dataset (everything except identifiers).
 # These are the columns a user can create/edit for their own ingredients.
 
@@ -225,6 +227,8 @@ ingredient_catalog <- function(path = ingredient_path()) {
     check.names = FALSE
   )
   user <- ingredient_load(path)
+  # User copies take precedence over reference feeds with the same name.
+  ref <- ref[!tolower(ref$Feed) %in% tolower(user$Feed), , drop = FALSE]
   cols <- intersect(names(ref), names(user))
   ref <- ref[, cols, drop = FALSE]
   user <- user[, cols, drop = FALSE]
