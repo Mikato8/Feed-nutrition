@@ -14,9 +14,6 @@
 #' feed.list(other)
 
 feed.list <- function(category="https://www.feedipedia.org/content/feeds?category=All") {
-  # package
-  stopifnot(require(rvest), require(dplyr))
-
   # subsetting
   assign("all","https://www.feedipedia.org/content/feeds?category=All",envir = globalenv())
   assign("forage","https://www.feedipedia.org/content/feeds?category=15965",envir = globalenv())

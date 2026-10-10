@@ -10,7 +10,6 @@
 #' feed.search("alfalfa")
 
 feed.search <- function(keyword) {
-  stopifnot(require(rvest), require(dplyr))
   keyword <- gsub(" ","%20",keyword)
   url <- paste0("https://www.feedipedia.org/search/node/",keyword)
   html <- read_html(url, encoding="UTF-8")

@@ -12,9 +12,6 @@
 #' 
 
 feed.extract <- function(url,n) {
-  # package
-  stopifnot(require(rvest), require(dplyr))
-
   html <- read_html(url, encoding="UTF-8")
 
   #nutrients
